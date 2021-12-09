@@ -41,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
         line-height: 150%;
     }
     h4{
+        font-size: 2rem;
         font-weight: bold;
     }
     span {
