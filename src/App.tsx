@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import AboutUs from "./pages/AboutUs";
 import ContactMe from "./pages/ContactMe";
 import Experience from "./pages/Experience";
+import MovieDetails from "./pages/MovieDetails";
 // Router
 import { Routes, Route } from "react-router-dom";
 
@@ -15,6 +16,7 @@ function App() {
 			<GlobalStyle />
 			<Nav />
 			<Routes>
+				<Route path="/work/:id" element={<MovieDetails />} />
 				<Route path="/" element={<AboutUs />} />
 				<Route path="/experience" element={<Experience />} />
 				<Route path="/contact" element={<ContactMe />} />
