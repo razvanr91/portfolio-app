@@ -8,19 +8,25 @@ import ContactMe from "./pages/ContactMe";
 import Experience from "./pages/Experience";
 import MovieDetails from "./pages/MovieDetails";
 // Router
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+// Animation
+import { AnimatePresence } from "framer-motion";
 
 function App() {
+	const location = useLocation();
+
 	return (
 		<div className="App">
 			<GlobalStyle />
 			<Nav />
-			<Routes>
-				<Route path="/work/:id" element={<MovieDetails />} />
-				<Route path="/" element={<AboutUs />} />
-				<Route path="/experience" element={<Experience />} />
-				<Route path="/contact" element={<ContactMe />} />
-			</Routes>
+			<AnimatePresence exitBeforeEnter>
+				<Routes location={location} key={location.pathname}>
+					<Route path="/work/:id" element={<MovieDetails />} />
+					<Route path="/" element={<AboutUs />} />
+					<Route path="/experience" element={<Experience />} />
+					<Route path="/contact" element={<ContactMe />} />
+				</Routes>
+			</AnimatePresence>
 		</div>
 	);
 }
