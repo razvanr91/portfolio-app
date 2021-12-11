@@ -9,9 +9,19 @@ import home2 from "../img/home2.png";
 import { About, Description, Image } from "../styles";
 import styled from "styled-components";
 
+// Animations
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
+import { scrollReveal } from "../animation";
+
 const CompSection = () => {
+	const controls = useAnimation();
+	const [element, view] = useInView({ threshold: 0.5 });
+
+	view ? controls.start("show") : controls.start("hidden");
+
 	return (
-		<Services>
+		<Services variants={scrollReveal} animate={controls} initial="hidden" ref={element}>
 			<Description>
 				<h2>
 					High <span>quality</span> services

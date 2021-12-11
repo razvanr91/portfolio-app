@@ -3,10 +3,18 @@ import styled from "styled-components";
 import { About } from "../styles";
 import Toggle from "./Toggle";
 import { AnimateSharedLayout } from "framer-motion";
+//Animations
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
+import { scrollReveal } from "../animation";
 
 const FaqSection = () => {
+	const controls = useAnimation();
+	const [element, view] = useInView({ threshold: 0.5 });
+
+	view ? controls.start("show") : controls.start("hidden");
 	return (
-		<Faq>
+		<Faq variants={scrollReveal} animate={controls} initial="hidden" ref={element}>
 			<h2>
 				Any Questions ? <span>FAQ</span>
 			</h2>
