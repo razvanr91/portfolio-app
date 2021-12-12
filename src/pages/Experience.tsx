@@ -8,10 +8,13 @@ import goodtimes from "../img/goodtimes-small.png";
 // Animations
 import { motion } from "framer-motion";
 import { pageAnimation, fade, photoAnimation, lineAnimation, slider, sliderContainer } from "../animation";
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion";
+import { scrollReveal } from "../animation";
 
 const Experience = () => {
 	return (
-		<Work variants={pageAnimation} initial="hidden" animate="show" exit="exit">
+		<Work style={{ background: "#fff" }} variants={pageAnimation} initial="hidden" animate="show" exit="exit">
 			<motion.div variants={sliderContainer}>
 				<Frame1 variants={slider}></Frame1>
 				<Frame2 variants={slider}></Frame2>
